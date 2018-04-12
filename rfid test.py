@@ -80,7 +80,7 @@ try:
             add_user(response)
             # call call make new user fn
 
-		game.StartGame()
+        game.StartGame()
 
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit):
