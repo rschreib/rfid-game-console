@@ -1,7 +1,13 @@
 #Names: Robert Schreibman & Robinson Merillat
-#Date:
+#Date: 04/22/18
 #Class: csci250 - Sensors
-#Description:
+#Description: This code will...
+# 1) Read an RFID tag
+#   if: tag exists then player proxy settings & infor and  will be imported
+#   from a file
+#   else: game will ask for new player information
+# 2) Then game will be played
+# 3) Game stats will be saved into a file 
 
 # import smbus
 import time
