@@ -38,6 +38,7 @@ print("Data sent")
 pin20 = 20
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pin20,GPIO.IN)
+users = {}
 
 # Get I2C bus - initial bus to channel 1
 # bus = smbus.SMBus(1)
@@ -46,17 +47,33 @@ firstvalue = 9
 
 try:
     while True:
-        response = port.read(8)
-        print(response)
-        #value = GPIO.input(pin20)
-        #print(value)
-        #if flag == 0:
-        #    flag = 1
-        #    firstvalue = GPIO.input(pin20)
-        #if value != firstvalue:
-        #    break
+        response = str(port.read(16))
+        if response in users:
+            print("Welcome Back ", response)
+			# call login fn and read user data
+        else:
+            print("Creating new user")
+            print("Welcome User : ", response)
+            users[response] = "Jose"
+            # call call make new user fn
 
 
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit):
     print("User requested exit... bye!")
+
+def add_user(ID):
+    # TODO ask user for user info
+    newuser = User("aaaaaa")
+    users[ID = newuser]
+
+def laod_user(ID):
+    return users(ID)
+
+def save_users(users):
+    with open('users.pkl', 'wb') as f:
+        pickle.dump(users, f, pickle.HIGHEST_PROTOCOL)
+
+def load_users():
+    with open('users.pkl', 'rb') as f:
+        return pickle.load(f)
