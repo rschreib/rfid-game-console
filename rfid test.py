@@ -56,8 +56,8 @@ def add_user(ID):
 def laod_user(ID):
     return users(ID)
 
-def save_users(users):
-	usersFile.users = users
+def save_users(u):
+	usersFile.users = u
 
 def load_users():
 	return usersFile.users
