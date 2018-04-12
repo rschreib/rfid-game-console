@@ -18,7 +18,7 @@ GPIO.setup(pin20,GPIO.IN)
 # bus = smbus.SMBus(1)
 flag = 0
 firstvalue = 9
-ser = serial.Serial(port=pin20,baudrate=9600,parity=serial.PARITY_NONE)
+ser = serial.Serial(pin20,9600,serial.PARITY_NONE)
 try:
     while True:
         value = ser.readline()
