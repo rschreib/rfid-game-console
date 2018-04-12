@@ -2,14 +2,14 @@
 from time import sleep
 
 def StartGame():
-    input = input("Play a game? [Y/n] ")
+    reponse = input("Play a game? [Y/n] ")
     acceptedResponses = ['y','Y','yes','Yes','YES','']
     playGame = False
     gameStartCounter = 3
 
 
-    for response in acceptedResponses:
-        if (input == response):
+    for item in acceptedResponses:
+        if (response == item):
             playGame = True
             print("playing game")
 
