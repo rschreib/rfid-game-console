@@ -14,6 +14,26 @@ import time
 from time import sleep
 import RPi.GPIO as GPIO
 import math
+import serial
+
+port = serial.Serial(
+	"/dev/ttyUSB0",
+	baudrate=9600,
+	parity=serial.PARITY_NONE,
+	stopbits=serial.STOPBITS_ONE,
+	bytesize=serial.EIGHTBITS,
+	writeTimeout = 0,
+	rtscts = False,
+	dsrdtr = False,
+	xonxoff = False)
+
+data=bytes([0x0c, 0x80, 0x09, 0x00, 0xf0, 0xce, 0x61, 0x9d, 0x01, 0x00,
+            0x01, 0x00, 0x00, 0x00])
+
+print(port.isOpen())
+print("Port opened...")
+port.write(data)
+print("Data sent")
 
 pin20 = 20
 GPIO.setmode(GPIO.BCM)
@@ -26,32 +46,16 @@ firstvalue = 9
 
 try:
     while True:
-        value = GPIO.input(pin20)
-        print(value)
-        if flag == 0:
-            flag = 1
-            firstvalue = GPIO.input(pin20)
-        if value != firstvalue:
-            break
+	    response = port.read(8)
+        print(response)
+        #value = GPIO.input(pin20)
+        #print(value)
+        #if flag == 0:
+        #    flag = 1
+        #    firstvalue = GPIO.input(pin20)
+        #if value != firstvalue:
+        #    break
 
-# #!/usr/bin/env python
-# import time
-# import sys
-#
-# card = '0019171125'        # Stored good card number consider using a list or a file.
-#
-# def main():                # define a main function.
-#     while True:            # loop until the program encounters an error.
-#         sys.stdin = open('/dev/tty0', 'r')
-#         RFID_input = input()
-#         if RFID_input == card:      # compare the stored number to the input and if True execute code.
-#             print "Access Granted"
-#             print "Read code from RFID reader:{0}".format(RFID_input)
-#         else:                    # and if the condition is false excecute this code.
-#             print "Access Denied"
-#
-# # where is tty defined??
-#             tty.close()
 
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit):
