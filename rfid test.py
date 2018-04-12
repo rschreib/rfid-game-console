@@ -8,7 +8,6 @@ import time
 from time import sleep
 import RPi.GPIO as GPIO
 import math
-import serial
 
 pin20 = 20
 GPIO.setmode(GPIO.BCM)
@@ -18,11 +17,10 @@ GPIO.setup(pin20,GPIO.IN)
 # bus = smbus.SMBus(1)
 flag = 0
 firstvalue = 9
-ser = serial.Serial(pin20,9600,serial.PARITY_NONE)
+
 try:
     while True:
-        value = ser.readline()
-        # value = GPIO.input(pin20)
+        value = GPIO.input(pin20)
         print(value)
         if flag == 0:
             flag = 1
