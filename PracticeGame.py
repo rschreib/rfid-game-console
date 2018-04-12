@@ -2,7 +2,7 @@
 from time import sleep
 
 def StartGame():
-    reponse = input("Play a game? [Y/n] ")
+    response = input("Play a game? [Y/n] ")
     acceptedResponses = ['y','Y','yes','Yes','YES','']
     playGame = False
     gameStartCounter = 3
