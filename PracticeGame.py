@@ -22,3 +22,4 @@ def StartGame():
     for i in range(gameStartCounter):
         print("{}".format(gameStartCounter-i))
         sleep(.5)
+    exit()
