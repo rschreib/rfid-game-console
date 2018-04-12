@@ -8,10 +8,10 @@ class User():
        self.wins = 0
        self.losses = 0
    def __repr__(self):
-       print("Name:\t{}".format(self.name))
-       print("age:\t{}".format(self.age))
-       print("Date Joined:\t{}".format(self.dateJoined))
-       print("Wins: {} Losses: {}".format(self.wins,self.losses))
+       return("Name:\t{}".format(self.name))
+       return("age:\t{}".format(self.age))
+       return("Date Joined:\t{}".format(self.dateJoined))
+       return("Wins: {} Losses: {}".format(self.wins,self.losses))
    def increment_wins(self):
        self.wins += 1
    def increment_losses(self):
