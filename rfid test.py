@@ -79,6 +79,7 @@ try:
             print("Welcome User : ", response)
             add_user(response)
             # call call make new user fn
+
 		game.StartGame()
 
 #capture the control c and exit cleanly
