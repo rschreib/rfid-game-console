@@ -17,6 +17,7 @@ import math
 import serial
 import UserClass as user
 import usersFile
+import PracticeGame as game
 
 port = serial.Serial(
 	"/dev/ttyUSB0",
@@ -79,7 +80,8 @@ try:
             add_user(response)
             # call call make new user fn
 
+		game.StartGame()
+
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit):
     print("User requested exit... bye!")
-
