@@ -15,6 +15,8 @@ from time import sleep
 import RPi.GPIO as GPIO
 import math
 import serial
+import UserClass as user
+import usersFile
 
 port = serial.Serial(
 	"/dev/ttyUSB0",
@@ -38,15 +40,35 @@ print("Data sent")
 pin20 = 20
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pin20,GPIO.IN)
-users = {}
 
 # Get I2C bus - initial bus to channel 1
 # bus = smbus.SMBus(1)
 flag = 0
 firstvalue = 9
 
+# fns that can eventually be offloaded to seperate file
+def add_user(ID):
+    # TODO ask user for user info
+    newuser = user.User("aaaaaa", 21)
+    users[ID] = newuser
+    print(users)
+
+def laod_user(ID):
+    return users(ID)
+
+def save_users(users):
+	usersFile.users = users
+
+def load_users():
+	return usersFile.users
+
+
+users = load_users() # load users dict from usersFile
+print(users)
+
 try:
     while True:
+        save_users(users)
         response = str(port.read(16))
         if response in users:
             print("Welcome Back ", response)
@@ -54,26 +76,10 @@ try:
         else:
             print("Creating new user")
             print("Welcome User : ", response)
-            users[response] = "Jose"
+            add_user(response)
             # call call make new user fn
-
 
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit):
     print("User requested exit... bye!")
 
-def add_user(ID):
-    # TODO ask user for user info
-    newuser = User("aaaaaa")
-    users[ID = newuser]
-
-def laod_user(ID):
-    return users(ID)
-
-def save_users(users):
-    with open('users.pkl', 'wb') as f:
-        pickle.dump(users, f, pickle.HIGHEST_PROTOCOL)
-
-def load_users():
-    with open('users.pkl', 'rb') as f:
-        return pickle.load(f)

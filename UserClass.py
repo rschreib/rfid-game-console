@@ -4,7 +4,7 @@ class User():
    def __init__(self, name, age):
        self.name = name
        self.age = age
-       self.dateJoined = datetime.now()
+       self.dateJoined = datetime.datetime.now()
        self.wins = 0
        self.losses = 0
    def __repr__(self):
