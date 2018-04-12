@@ -7,7 +7,7 @@
 #   from a file
 #   else: game will ask for new player information
 # 2) Then game will be played
-# 3) Game stats will be saved into a file 
+# 3) Game stats will be saved into a file
 
 # import smbus
 import time
@@ -46,7 +46,7 @@ firstvalue = 9
 
 try:
     while True:
-	    response = port.read(8)
+        response = port.read(8)
         print(response)
         #value = GPIO.input(pin20)
         #print(value)
