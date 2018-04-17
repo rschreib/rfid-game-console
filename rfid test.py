@@ -16,8 +16,8 @@ import RPi.GPIO as GPIO
 import math
 import serial
 import UserClass as user
-import usersFile
 import PracticeGame as game
+import pickle
 
 port = serial.Serial(
 	"/dev/ttyUSB0",
@@ -42,6 +42,8 @@ pin20 = 20
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pin20,GPIO.IN)
 
+usersFile = 'users.txt'
+
 # Get I2C bus - initial bus to channel 1
 # bus = smbus.SMBus(1)
 flag = 0
@@ -58,18 +60,24 @@ def laod_user(ID):
     return users(ID)
 
 def save_users(u):
-	usersFile.users = u
+	pickle.dump(u, open(usersFile, 'wb'))
+	print(u)
 
 def load_users():
-	return usersFile.users
-
+	try:
+		return pickle.load(open(usersFile, 'rb'))
+	except pickle.UnpicklingError:
+		print("error loading file")
+		data = {}
+		return data
 
 users = load_users() # load users dict from usersFile
+if users == None:
+	users = {}
 print(users)
 
 try:
     while True:
-        save_users(users)
         response = str(port.read(16))
         if response in users:
             print("Welcome Back ", response)
@@ -78,9 +86,10 @@ try:
             print("Creating new user")
             print("Welcome User : ", response)
             add_user(response)
+            save_users(users)
             # call call make new user fn
 
-        game.StartGame()
+        #game.StartGame()
 
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit):
