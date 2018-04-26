@@ -81,6 +81,7 @@ try:
         response = str(port.read(16))
         if response in users:
             print("Welcome Back ", response)
+			#game.startGame()
 			# call login fn and read user data
         else:
             print("Creating new user")
@@ -89,7 +90,7 @@ try:
             save_users(users)
             # call call make new user fn
 
-        #game.StartGame()
+        game.StartGame()
 
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit):
