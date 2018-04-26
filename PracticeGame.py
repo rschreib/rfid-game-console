@@ -46,4 +46,4 @@ def does_user_exist(userID):
 
 # print(does_user_exist("Robert"))
 
-#StartGame()
+StartGame()
