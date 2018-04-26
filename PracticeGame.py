@@ -2,7 +2,7 @@ from time import sleep
 from os import system
 import numpy
 import tictactoe
-import fourinarow
+import fourinarow2
 
 def StartGame():
     response = input("Play a game? [Y/n] ")
@@ -33,7 +33,7 @@ def StartGame():
         tictactoe.main()
         input("\n\nPress the enter key to quit.")
     elif (response == '2'):
-        fourinarow.main()
+        fourinarow2.main()
     else:
         exit()
 
