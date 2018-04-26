@@ -61,7 +61,7 @@ def make_user_move(board):
     try:
         valid_move = False
         while not valid_move:
-            col = input("What col would you like to move to (1-7):")
+            col = int(input("What col would you like to move to (1-7):"))
             for row in range (6,0,-1):
                 if (1 <= row <= 6) and (1 <= col <= 7) and (board[row-1][col-1] == " "):
                     board[row-1][col-1] = 'X'
