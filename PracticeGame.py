@@ -20,8 +20,9 @@ def StartGame():
         exit()
 
     response = 1
-    print("1: Tic Tac Toe\n")
-    print("2: Four in a Row\n")
+    print("1: Tic Tac Toe")
+    print("2: Four in a Row")
+    print
     response = input("Select a game:")
 
     print("Game starting in...")
