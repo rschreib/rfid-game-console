@@ -105,15 +105,16 @@ try:
 				game.StartGame()
             	# call call make new user fn
 		userName = input("Username : ")
-		if userName in users:
-            	print("Welcome Back ", response)
+		for u in users:
+			if userName == u.name:
+				print("Welcome Back ", response)
 				game.startGame()
 				# call login fn and read user data
-        	else:
-            	print("Username doesn't exist yet")
+			else:
+				print("Username doesn't exist yet")
 				r = input("Would you like to create a new account? [Y/n] : ")
 				if r in acceptedResponses:
-					add_user("")     
+					add_user("")
 
 #capture the control c and exit cleanly
 except(KeyboardInterrupt, SystemExit):

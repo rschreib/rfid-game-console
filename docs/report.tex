@@ -1,0 +1,80 @@
+\documentclass[notitlepage,11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\linespread{1.5}
+\setlength{\parindent}{1cm} % Default is 15pt.
+
+\title{Capstone Project Report}
+\author{Robbie Merillat : RFID Scanning and User Managment}
+\author{Robert Schreibman : Game Integration and Housing Construction}
+\date{\today}
+
+\begin{document}
+    \maketitle
+    \begin{abstract}
+        In order to speed up the process of logging into an account with a 
+        username and password, this project uses an RFID reader which is 
+        used to scan a wallet-sized RFID card in order to automatically log 
+        into a gaming account. The gaming data and account information is then 
+        centrally stored in a file where the associated user can access it either 
+        via RFID card tag or using a regular username and password.
+    \end{abstract}
+
+    \newpage
+
+    \section{Project Description}
+        The broad idea behind this project is to speed up a process of logging into 
+        an account. In today’s society, just about every website we visit has required 
+        an account set up with a unique username and password. After setting up dozens of 
+        these accounts, each with different info, it becomes impossible to remember each 
+        specific username and password for every individual website. For convenience, 
+        many individuals have allotted this task to third party password managers to 
+        keep track of this information. However, for those who do not trust third 
+        party password managers, we have created an alternative system that will do 
+        the same job. Using an RFID reader, we have interfaced wallet-sized RFID 
+        cards with account login information. 
+
+        Currently, our system is interfaced with a single account associated with two terminal games. After a user scans their RFID card, they will be automatically logged into their account where their game statistics are kept per game. The user then can choose one of two games: tic tac toe or four in a row. After playing their game statistics will be saved to their RFID account.
+    \section{Sensors}
+
+    \section{Obstacles}
+
+    \section{Results}
+
+    \section{Summary}
+
+    \section{Code}
+        \textbf{"run.py begins our code and starts the RFID reader"}
+        \lstinputlisting[language=Python]{../run.py}
+\end{document}

@@ -1,1 +1,8 @@
 *.DS_Store
+*.pdf
+*.log
+*.fls
+*.aux
+*.gz
+*.fdb_latexmk
+__latexindent_temp.tex
