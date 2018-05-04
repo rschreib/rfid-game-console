@@ -3,8 +3,10 @@
 \usepackage{enumitem}
 \usepackage{textcomp}
 \usepackage{amsmath}
+\usepackage{graphicx}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{float}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -68,7 +70,58 @@
         Currently, our system is interfaced with a single account associated with two terminal games. After a user scans their RFID card, they will be automatically logged into their account where their game statistics are kept per game. The user then can choose one of two games: tic tac toe or four in a row. After playing their game statistics will be saved to their RFID account.
     \section{Sensors}
 
+        The primary sensor used in this project is an RFID reader chip. This 
+        chip can scan RFID tags from two inches away through a 3D printed death 
+        star case made out of polylactic acid (PLA) material. Each RFID card comes 
+        with a unique serial tag that the RFID reader will scan and save to a file. 
+        The RFID reader is safely stored inside the death star case as shown in Figure 
+        \ref{fig:death}.
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\textwidth]{images/deathstar.png}
+            \caption{Raspberry Pi Death Star case 3D printed using PLA}
+            \label{fig:death}
+        \end{figure}
+
+        
     \section{Obstacles}
+
+        The proposed scope of the project included four main parts. The first 
+        part was to get the RFID reader to first successfully recognize tags. 
+        After receiving the RFID starter kit, we had trouble trying to figure out 
+        how to read from the pins on the RFID reader. We never figured it out, so 
+        instead, we decided to interface the RFID reader with the raspberry pi over 
+        a USB connection since there was more documentation on doing this, and this is 
+        a much more user-friendly connection setup. The circuit diagram for this wired 
+        connection is shown in Figure X. The next part was to get the Raspberry Pi 
+        to maintain a history of previously scanned RFID cards so new users could 
+        create login profiles. This was done by writing to a file a list of scanned 
+        RFID tags. If a recognized tag was scanned, then the Raspberry Pi would 
+        just load the user data from the file. The third part of this project was 
+        to interface the user data with multiple games. We were able to integrate 
+        Tic Tac Toe and Four In a Row into a menu list of games to play. The 
+        terminal interface of these two games is shown in Figures \ref{fig:ticCommand} 
+        and \ref{fig:fourCommand}. The fourth part of our project was to save the 
+        game data into a central location which is saved under the current user 
+        logged on.
+
+        After the game exits successfully, it returns the results of the game 
+        which is then updated to the current users' statistics
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\textwidth]{images/deathstar.png}
+            \caption{Tic Tac Toe Command Line Interface}
+            \label{fig:ticCommand}
+        \end{figure}
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\textwidth]{images/deathstar.png}
+            \caption{ Four In a Row Command Line Interface}
+            \label{fig:fourCommand}
+        \end{figure}
 
     \section{Results}
 
@@ -77,4 +130,5 @@
     \section{Code}
         \textbf{"run.py begins our code and starts the RFID reader"}
         \lstinputlisting[language=Python]{../run.py}
+
 \end{document}
